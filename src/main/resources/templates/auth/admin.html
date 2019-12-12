@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="~{fragments/head}"/>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+    <script src="http://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script>
+        $(document).ready( function () {
+            $('#show-logs').DataTable();
+        } );
+        </script>
+</head>
+
+<body>
+<div class="wrapper">
+    <header class="header">
+        <th:block th:include="~{fragments/user-navbar}"/>
+    </header>
+    <section id="mainHome">
+        <div id="table5" class="table100 ver2 m-b-110">
+            <table id="show-logs" data-vertable="ver2">
+                <h3 style="text-align: center;"> Logs </h3>
+                <thead>
+                <tr>
+                    <th class="column100 column1" data-column="column1"></th>
+                    <th class="column100 column2" data-column="column2">USER</th>
+                    <th class="column100 column3" data-column="column3">TIME</th>
+                    <th class="column100 column2" data-column="column2">ACTION</th>
+                    <th class="column100 column2" data-column="column2">Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="log,iStat : ${logs}">
+                    <td class="column100 column1" style="color: black" th:text="${iStat.index+1}"></td>
+                    <td class="column100 column2" th:text="${log.getUser()}"></td>
+                    <td class="column100 column2" th:text="${log.getTime()}"></td>
+                    <td class="column100 column2" th:text="${log.getAction()}"></td>
+                    <td>
+                        <form method="post" th:action="@{/delete/{id}(id=${log.id})}">
+                            <button class="btn btn-info">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <footer class="footer">
+        <th:block th:include="~{fragments/footer}"/>
+    </footer>
+</div>
+</body>
+</html>

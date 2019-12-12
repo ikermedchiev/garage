@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="~{fragments/head}"/>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <th:block th:include="~{fragments/guest-nav}"/>
+        </header>
+        <main id="mainReg">
+            <h1>Register Form</h1>
+            <div class="main-agileinfo">
+                <div class="agileits-top">
+                    <form action="#" method="post" th:action="@{/register}">
+                        <input class="text" type="text" name="username" placeholder="Username" required="">
+                        <input class="text" type="text" name="fullName" placeholder="Full Name" required="">
+                        <input class="text" type="text" name="phone" placeholder="Phone" required="">
+                        <br/>
+                        <input class="text email" type="email" name="email" placeholder="Email" required="">
+                        <input class="text" type="password" name="password" placeholder="Password" required="">
+                        <input class="text w3lpass" type="password" name="confirmPassword" placeholder="Confirm Password" required="">
+                        <input type="submit" value="SIGNUP">
+                    </form>
+                    <p>Already have an Account? <a th:href="@{/login}"> Login Now!</a></p>
+                </div>
+            </div>
+        </main>
+        <footer class="footer">
+            <th:block th:include="~{fragments/footer}"/>
+        </footer>
+</div>     
+</body>
+</html>

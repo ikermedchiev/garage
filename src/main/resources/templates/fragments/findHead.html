@@ -1,0 +1,62 @@
+<th:block th:fragment>
+    <title>Rent a Garage</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/map.css}">
+    <link rel="stylesheet" th:href="@{/css/table.css}">
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWQPIEh_U08lCIxb13itKNobDIy5wrYv0&callback=initMap">
+    </script>
+    <script type="text/javascript">
+
+        var markerLat = [[${laititude}]];
+        var markerLong = [[${longtitude}]];
+
+        var map;
+
+        function initMap() {
+            var mapOptions = {
+                center: new google.maps.LatLng(markerLat[0], markerLong[0]),
+                zoom: 15,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+            for (i = 0; i < markerLat.length; i++) {
+                var latlngset = new google.maps.LatLng(markerLat[i], markerLong[i]);
+                var marker = new google.maps.Marker({position: latlngset, map: map});
+
+            }
+
+        }
+
+
+
+        function showlocation() {
+            navigator.geolocation.getCurrentPosition(callback);
+        }
+
+
+        function callback(position) {
+            var lat = position.coords.latitude;
+            var lon = position.coords.longitude;
+
+            document.getElementById('latitude').innerHTML = lat;
+            document.getElementById('longitude').innerHTML = lon;
+
+            var latLong = new google.maps.LatLng(lat, lon);
+
+            var marker = new google.maps.Marker({
+                position: latLong
+            });
+
+            marker.setMap(map);
+            map.setZoom(15);
+            map.setCenter(marker.getPosition());
+
+            google.maps.event.addDomListener(window, 'load', initMap);
+        }
+
+    </script>
+
+
+</th:block>

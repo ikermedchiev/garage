@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="~{fragments/head}"/>
+</head>
+<body>
+<div class="wrapper">
+    <header class="header">
+        <th:block th:include="~{fragments/user-navbar}"/>
+    </header>
+    <main id="mainLog">
+        <h1> ADD A GARAGE </h1>
+        <div class="main-agileinfo">
+            <div class="agileits-top">
+                <form action="#" method="post" th:action="@{/add-garage}">
+                    <input class="text" type="text" name="town" placeholder="Town" required="">
+                    <input class="text" type="text" name="address" placeholder="address" required="">
+                    <input type="submit" value="Add">
+                </form>
+                <p>Add your garage town and street</p>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <th:block th:include="~{fragments/footer}"/>
+    </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="~{fragments/head}"/>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $( function() {
+            $( "#datepicker" ).datepicker();
+        } );
+    </script>
+    <script>
+        $( function() {
+            $( "#datepicker1" ).datepicker();
+        } );
+    </script>
+</head>
+<body>
+<div class="wrapper">
+    <header class="header">
+        <th:block th:include="~{fragments/user-navbar}"/>
+    </header>
+    <main id="lend">
+        <h1> PICK DATES </h1>
+        <div class="main-agileinfo">
+            <div class="agileits-top">
+                <form action="#" method="post" th:action="@{/lend-garage/{id}(id=${garageId})}">
+                    <input id="datepicker" class="text" type="text" name="freeFrom" placeholder="Available from" required="">
+                    <br>
+                    <br>
+                    <input id="datepicker1"  class="text" type="text" name="freeUntil" placeholder="Available to" required="">
+                    <br>
+                    <br>
+                    <input class="text" type="text" name="price" placeholder="Price" required="">
+                    <input type="submit" value="Lend">
+                </form>
+                <p>Lend your garage</p>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <th:block th:include="~{fragments/footer}"/>
+    </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="~{fragments/head}"/>
+</head>
+<body>
+<div class="wrapper">
+    <header class="header">
+        <th:block th:include="~{fragments/user-navbar}"/>
+    </header>
+    <main id="mainHome">
+        <h2  id="homeWelcome" th:text="|Hello, ${user}|"></h2>
+        <div id="table1" class="table100 ver2 m-b-110">
+            <table data-vertable="ver2">
+                <h3 style="text-align: center;"> MY GARAGES </h3>
+                <thead>
+                <tr class="row100 head">
+                    <th class="column100 column1" data-column="column1"></th>
+                    <th class="column100 column2" data-column="column2">TOWN</th>
+                    <th class="column100 column3" data-column="column3">ADDRESS</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="row100" th:each="garage,iStat : ${garages}">
+                    <td class="column100 column1" >
+                        <a style="color: black" th:href="@{/lend-garage/{id}(id=${garage.id})}"  th:text="${iStat.index+1}"/>
+                    </td>
+                    <td class="column100 column2" th:text="${garage.getTown()}"></td>
+                    <td class="column100 column2" th:text="${garage.getAddress()}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="table2" class="table100 ver2 m-b-110">
+            <table data-vertable="ver2">
+                <h3 style="text-align: center;"> MY CARS </h3>
+                <thead>
+                <tr class="row100 head">
+                    <th class="column100 column1" data-column="column1"></th>
+                    <th class="column100 column2" data-column="column2">BRAND</th>
+                    <th class="column100 column3" data-column="column3">NUMBER</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="row100" th:each="car,iStat : ${cars}">
+                    <td class="column100 column1" th:text="${iStat.index+1}">
+                    <td class="column100 column2" th:text="${car.getBrand()}"></td>
+                    <td class="column100 column2" th:text="${car.getCarNumber()}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+    </main>
+    <footer class="footer">
+        <th:block th:include="~{fragments/footer}"/>
+    </footer>
+</div>
+</body>
+</html>

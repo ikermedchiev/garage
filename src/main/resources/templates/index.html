@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="~{fragments/head}"/>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <th:block th:include="~{fragments/guest-nav}"/>
+        </header>
+        <main  id="main">
+            <b  id="welcome"  class="h1 display-3">Welcome to Rent a Garage</b>
+            <p  class="h3">The best way to park easily.</p>
+            <hr  style="border:1px solid #41a4c2;" class="line">
+            <p id="log">
+                <a    th:href="@{/login}">Login</a> if you have an account or
+                <a  th:href="@{register}">Register</a> and find a garage with pleasure.
+            </p>
+        </main>
+        <footer class="footer">
+            <th:block th:include="~{fragments/footer}"/>
+        </footer>
+</div>     
+</body>
+</html>

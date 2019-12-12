@@ -1,0 +1,15 @@
+#map-canvas {
+    height: 400px;
+    width: 40%;
+    top: 200px;
+    left: 150px;
+    position: absolute;
+}
+
+#find {
+    position: absolute;
+    top: 650px;
+    left: 380px;
+    width: 100px;
+    height: 50px;
+}

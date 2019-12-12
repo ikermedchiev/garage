@@ -1,0 +1,28 @@
+<th:block th:fragment xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="header-top">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-4 col-xs-4">
+                            <div class="logo">
+                                <h2><a th:href="@{/user-home}">Rent a Garage</a></h2>
+                            </div>
+                        </div>
+                        <div class="col-md-9 col-sm-12 col-xs-12">
+                            <div class="menu">
+                                <ul class="nav navbar-nav">
+                                        <li><a th:href="@{/find-garage}">FIND</a></li>
+                                        <li><a th:href="@{/add-car}">ADD CAR</a></li>
+                                        <li><a th:href="@{/add-garage}">ADD GARAGE</a></li>
+                                        <li><a th:href="@{/generated-receipts}">RECEIPTS</a></li>
+                                        <li><a th:href="@{/logout}">LOGOUT</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</th:block>

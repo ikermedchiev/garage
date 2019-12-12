@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="~{fragments/head}"/>
+</head>
+<body>
+<div class="wrapper">
+    <header class="header">
+        <th:block th:include="~{fragments/user-navbar}"/>
+    </header>
+    <main>
+        <div id="table1" class="table100 ver2 m-b-110">
+            <table data-vertable="ver2">
+                <h3 style="text-align: center;"> FREE GARAGE</h3>
+                <thead>
+                <tr class="row100 head">
+                    <th class="column100 column1" data-column="column1"></th>
+                    <th class="column100 column2" data-column="column2">TOWN</th>
+                    <th class="column100 column3" data-column="column3">ADDRESS</th>
+                    <th class="column100 column3" data-column="column3">Price</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="row100" th:each="date,iStat : ${dates}">
+                    <td class="column100 column1">
+                        <a style="color: black" th:text="${iStat.index+1}"/>
+                    </td>
+                    <td class="column100 column2" th:text="${date.getFreeFrom()}"></td>
+                    <td class="column100 column2" th:text="${date.getFreeUntil()}"></td>
+                    <td class="column100 column2" th:text="${date.getPrice()}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+            <div id="borrow">
+                <h3> CHOOSE DATE </h3>
+                <div class="main-agileinfo">
+                    <div class="agileits-top">
+                        <form  action="#" method="post" th:action="@{/borrow-garage/{id}(id=${garage.id})}">
+                            <select name="freeFrom"  class="mdb-select md-form colorful-select dropdown-primary">
+                                <option style="color: black" th:each="date,iStat: ${dates}" name="freeFrom" th:value="${date.getFreeFrom()}" th:text="${date.getFreeFrom()}+' - '+ ${date.getFreeUntil()}">
+                                </option>
+                            </select>
+                            <br>
+                            <select name="carNumber"  class="mdb-select md-form colorful-select dropdown-primary">
+                                <option style="color: black" th:each="car,iStat: ${cars}" name="carNumber" th:value="${car.getCarNumber()}" th:text="${car.getCarNumber()}">
+                                </option>
+                            </select>
+                            <br>
+                            <input class="btn btn-info" type="submit" value="Borrow">
+                        </form>
+                        <p>Borrow a garage</p>
+                    </div>
+                </div>
+            </div>
+    </main>
+    <footer class="footer">
+        <th:block th:include="~{fragments/footer}"/>
+    </footer>
+</div>
+</body>
+</html>

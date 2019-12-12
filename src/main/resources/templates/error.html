@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <th:block th:include="~{fragments/head}"/>
+</head>
+<body>
+<div class="wrapper">
+    <header class="header">
+        <th:block th:include="~{fragments/user-navbar}"/>
+    </header>
+    <main id="error">
+        <h2 style="text-align: center">Ooops....</h2>
+        <p th:text="${message}"></p>
+        <img src="https://www.abreak4mommy.com/wp-content/uploads/2015/10/sad-computer-md.png" alt="problem">
+        <h3 style="text-align: center">It`s not you, it`s us, give it another try. Please!</h3>
+    </main>
+    <footer class="footer">
+        <th:block th:include="~{fragments/footer}"/>
+    </footer>
+</div>
+</body>
+</html>

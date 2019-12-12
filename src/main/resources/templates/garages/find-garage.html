@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="~{fragments/findHead}"/>
+</head>
+<body>
+<div class="wrapper">
+    <header class="header">
+        <th:block th:include="~{fragments/user-navbar}"/>
+    </header>
+    <main>
+        <div id="table3" class="table100 ver2 m-b-110">
+            <table data-vertable="ver2">
+                <h3 style="text-align: center;"> GARAGES </h3>
+                <thead>
+                <tr class="row100 head">
+                    <th class="column100 column1" data-column="column1"></th>
+                    <th class="column100 column3" data-column="column3">ADDRESS</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr  class="row100" th:each="garage,iStat : ${garagesFind}">
+                    <td class="column100 column1" style="color: black"  th:text="${iStat.index+1}">
+                    <td class="column100 column2">
+                    <a style="color: black" th:href="@{/borrow-garage/{id}(id=${garage.id})}"  th:text="${garage.getAddress()}"/>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="map"></div>
+        <div id="find">
+            <input class="btn btn-info" type="button" value="Show My Location"
+                   onclick="javascript:showlocation()"/> <br/>
+            <span style="visibility: hidden" id="latitude"></span> <br/>
+            <span style="visibility: hidden" id="longitude"></span>
+
+            <br/><br/>
+        </div>
+        <div id="map-canvas"/>
+    </main>
+    <footer class="footer">
+        <th:block th:include="~{fragments/footer}"/>
+    </footer>
+</div>
+</body>
+
+</html>

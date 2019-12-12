@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="~{fragments/head}"/>
+</head>
+<body>
+<div class="wrapper">
+    <header class="header">
+        <th:block th:include="~{fragments/user-navbar}"/>
+    </header>
+    <main id="mainHome">
+        <h2  id="homeWelcome" th:text="|Hello, ${user}|"></h2>
+        <div id="table4" class="table100 ver2 m-b-110">
+            <table data-vertable="ver2">
+                <h3 style="text-align: center;"> MY RECEIPTS </h3>
+                <thead>
+                <tr class="row100 head">
+                    <th class="column100 column1" data-column="column1"></th>
+                    <th class="column100 column2" data-column="column2">TYPE</th>
+                    <th class="column100 column3" data-column="column3">ADDRESS</th>
+                    <th class="column100 column2" data-column="column2">DATE</th>
+                    <th class="column100 column3" data-column="column3">VALUE</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="row100" th:each="receipt,iStat : ${receipts}">
+                    <td class="column100 column1" style="color: black"   th:text="${iStat.index+1}"></td>
+                    <td class="column100 column2" th:text="${receipt.getType()}"></td>
+                    <td class="column100 column2" th:text="${receipt.getAddress()}"></td>
+                    <td class="column100 column2" th:text="${receipt.getDate()}"></td>
+                    <td class="column100 column2" th:text="${receipt.getValue()}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <footer class="footer">
+        <th:block th:include="~{fragments/footer}"/>
+    </footer>
+</div>
+</body>
+</html>
