@@ -7,16 +7,8 @@
     <link rel="stylesheet" href="/resources/demos/style.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script>
-        $( function() {
-            $( "#datepicker" ).datepicker();
-        } );
-    </script>
-    <script>
-        $( function() {
-            $( "#datepicker1" ).datepicker();
-        } );
-    </script>
+    <script th:src="@{/js/datePicker.js}"></script>
+    <script th:src="@{/js/datePicker1.js}"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -28,10 +20,12 @@
         <div class="main-agileinfo">
             <div class="agileits-top">
                 <form action="#" method="post" th:action="@{/lend-garage/{id}(id=${garageId})}">
-                    <input id="datepicker" class="text" type="text" name="freeFrom" placeholder="Available from" required="">
+                    <input id="datepicker" class="text" type="text" name="freeFrom" placeholder="Available from"
+                           required="">
                     <br>
                     <br>
-                    <input id="datepicker1"  class="text" type="text" name="freeUntil" placeholder="Available to" required="">
+                    <input id="datepicker1" class="text" type="text" name="freeUntil" placeholder="Available to"
+                           required="">
                     <br>
                     <br>
                     <input class="text" type="text" name="price" placeholder="Price" required="">

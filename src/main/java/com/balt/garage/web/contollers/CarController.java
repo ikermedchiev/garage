@@ -46,10 +46,8 @@ public class CarController {
         System.out.println();
         this.carService.add(this.modelMapper.map(model, CarServiceModel.class), username, time);
 
-
         modelAndView.setViewName("redirect:/user-home");
         return modelAndView;
-
 
     }
 }
